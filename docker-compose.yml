@@ -17,7 +17,7 @@ services:
         source: ./daemon_storage
         target: /storage
   app:
-    image: sayplastic/lbryweb
+    image: sayplastic/lbryweb-prototype
     ports:
       - "80:80"
     depends_on:
