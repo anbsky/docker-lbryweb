@@ -17,9 +17,7 @@ services:
         source: ./daemon_storage
         target: /storage
   app:
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    image: sayplastic/lbryweb
     ports:
       - "80:80"
     depends_on:
