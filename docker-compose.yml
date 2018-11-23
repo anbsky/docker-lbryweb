@@ -1,0 +1,44 @@
+version: '3.2'
+
+services:
+  db:
+    image: postgres:9.6-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: ")UiCMCiWRcee9Yg"
+      POSTGRES_USER: lbryweb
+  daemon:
+    image: sayplastic/lbrynet:0.30.1rc1
+    ports:
+      - "5479:5279"
+    volumes:
+      - type: bind
+        source: ./daemon_storage
+        target: /storage
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+      - daemon
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_USER: lbryweb
+      LBRY_DAEMON: http://daemon:5279/
+      LBRY_DOWNLOAD_DIRECTORY: /storage/download
+      LBRY_CONTENT_URL: http://localhost/storage/content/
+    volumes:
+      - type: bind
+        source: ./daemon_storage
+        target: /storage
+        volume:
+          nocopy: true
+      - static:/app/static
+
+volumes:
+  storage:
+  static:
