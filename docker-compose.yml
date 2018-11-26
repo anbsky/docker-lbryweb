@@ -28,7 +28,7 @@ services:
       POSTGRES_USER: lbryweb
       LBRY_DAEMON: http://daemon:5279/
       LBRY_DOWNLOAD_DIRECTORY: /storage/download
-      LBRY_CONTENT_URL: http://localhost/storage/content/
+      LBRY_CONTENT_URL: http://lbryweb-prototype.lbry.io/storage/content/
     volumes:
       - type: bind
         source: ./daemon_storage
