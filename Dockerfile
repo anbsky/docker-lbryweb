@@ -7,10 +7,11 @@ RUN mkdir /run/nginx/
 RUN mkdir /app
 WORKDIR /app
 
+ADD ./source /app
+
 RUN apk update && \
- apk add git postgresql-libs nginx supervisor && \
+ apk add postgresql-libs nginx supervisor && \
  apk add --virtual .build-deps linux-headers gcc musl-dev postgresql-dev && \
- git clone -b prototype https://github.com/lbryio/lbryweb.git /app && \
  pip3 install pipenv uwsgi && \
  pipenv install --deploy && \
  apk --purge del .build-deps
