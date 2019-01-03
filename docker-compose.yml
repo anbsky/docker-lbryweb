@@ -29,6 +29,8 @@ services:
       LBRY_DAEMON: http://daemon:5279/
       LBRY_DOWNLOAD_DIRECTORY: /storage/download
       LBRY_CONTENT_URL: http://lbryweb-prototype.lbry.io/storage/content/
+      LBRY_PUBLISH_SAVE: /storage/publish
+      LBRY_PUBLISH_FEED: /storage/publish
     volumes:
       - type: bind
         source: ./daemon_storage

@@ -20,6 +20,6 @@ RUN ln -s `pipenv --venv` /app/venv
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 COPY conf/supervisor.ini /etc/supervisor.d/
-COPY uwsgi.ini /app/lbryweb
+COPY uwsgi.ini /app/lbryweb/
 
 CMD ["supervisord", "-n"]
